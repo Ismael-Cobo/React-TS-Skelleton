@@ -1,35 +1,36 @@
 import { lazy, LazyExoticComponent } from 'react'
 //import { LazyPage1, LazyPage2, LazyPage3 } from '../01-lazyLoad/pages'
+import { NoLazy } from '../01-lazyLoad/pages/NoLazy';
+
+
 type JSXElement = () => JSX.Element
 
 interface Route {
-    to: string;
     path: string;
+    to: string;
     Component: LazyExoticComponent<JSXElement> | JSXElement;
     name: string
 }
 
-const Lazy1 = lazy( () => import( /* webpackChunkName: "LazyPage1" */'../01-lazyLoad/pages/LazyPage1')) 
-const Lazy2 = lazy( () => import( /* webpackChunkName: "LazyPage2" */'../01-lazyLoad/pages/LazyPage2')) 
-const Lazy3 = lazy( () => import( /* webpackChunkName: "LazyPage3" */'../01-lazyLoad/pages/LazyPage3')) 
 
+const LazyLayout = lazy( () => import( /* webpackChunkName: "LazyLayout" */'../01-lazyLoad/layout/LazyLayout')) 
+
+//const Lazy1 = lazy( () => import( /* webpackChunkName: "LazyPage1" */'../01-lazyLoad/pages/LazyPage1')) 
+//const Lazy2 = lazy( () => import( /* webpackChunkName: "LazyPage2" */'../01-lazyLoad/pages/LazyPage2')) 
+//const Lazy3 = lazy( () => import( /* webpackChunkName: "LazyPage3" */'../01-lazyLoad/pages/LazyPage3')) 
+
+// El path y el to deben de tener el mismo nombre
 export const routes: Route[] = [
     {
-        to: '/lazy1',
-        path: 'lazy1',
-        Component: Lazy1,
-        name: 'Lazy 1'
+        path: '/lazyLayout/*',
+        to: '/lazyLayout',
+        Component: LazyLayout,
+        name: 'LazyLayout - Dash'
     },
     {
-        to: '/lazy2',
-        path: 'lazy2',
-        Component: Lazy2,
-        name: 'Lazy 2'
+        path: 'no-lazy',
+        to: '/no-lazy',
+        Component: NoLazy,
+        name: 'No Lazy'
     },
-    {
-        to: '/lazy3',
-        path: 'lazy3',
-        Component: Lazy3,
-        name: 'Lazy 3'
-    }
 ]
