@@ -1,6 +1,6 @@
 import { Navigation } from './routes/Navigation';
 
-function App() {
+export const App = () => {
   return (
     <>
       <Navigation />
@@ -8,4 +8,3 @@ function App() {
   );
 }
 
-export default App;

@@ -51,3 +51,12 @@ nav li a {
   color: grey;
   transition: all .3s ease-out;
 }
+
+nav::-webkit-scrollbar {
+  overflow: hidden;
+}
+
+nav {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
